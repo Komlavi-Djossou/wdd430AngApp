@@ -1,0 +1,29 @@
+<div class="row">
+   
+    <div class="col-xs-12">
+        <a
+         href="#" 
+        class="list-group-item clearfix"
+        *ngFor="let contact of contacts">
+        <span class="pull-left">
+            <!-- <img 
+            [src]="contact.imageUrl" 
+            alt="{{contact.name}}" 
+             class="img-responsive" 
+             style="max-height: 50px"> -->
+        </span>
+
+            <div class="pull-right">
+                <button class="btn btn-success">Edit</button>
+                <button class="btn btn-success">Delete</button>
+            </div>
+            
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h4 class="list-group-item-heading">Email:</h4>
+        <p class="list-group-item-description">Phone: </p>
+    </div>
+</div>

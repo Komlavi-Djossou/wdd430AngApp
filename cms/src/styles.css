@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+.panel-heading {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+/* contact list style  */
+.pull-right button.btn.btn-success {
+    margin: 10px;
+    background-color: red;
+}
+button.btn.btn-success:nth-child(1) {
+    background: blue;
+}

@@ -1,9 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "ed5559cb-2afc-4e7f-bdbc-f00d7f61e790"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angularApp": {
+    "cms": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -12,12 +15,12 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "cms",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-app",
+            "outputPath": "dist/cms",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,7 +31,7 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "styles.scss"
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -69,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angularApp:build:production"
+              "browserTarget": "cms:build:production"
             },
             "development": {
-              "browserTarget": "angularApp:build:development"
+              "browserTarget": "cms:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angularApp:build"
+            "browserTarget": "cms:build"
           }
         },
         "test": {
@@ -103,5 +106,5 @@
       }
     }
   },
-  "defaultProject": "angularApp"
+  "defaultProject": "cms"
 }
