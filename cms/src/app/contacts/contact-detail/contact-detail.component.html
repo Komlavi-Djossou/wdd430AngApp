@@ -1,29 +1,40 @@
 <div class="row">
-   
     <div class="col-xs-12">
-        <a
-         href="#" 
-        class="list-group-item clearfix"
-        *ngFor="let contact of contacts">
-        <span class="pull-left">
-            <!-- <img 
-            [src]="contact.imageUrl" 
-            alt="{{contact.name}}" 
-             class="img-responsive" 
-             style="max-height: 50px"> -->
-        </span>
-
-            <div class="pull-right">
-                <button class="btn btn-success">Edit</button>
-                <button class="btn btn-success">Delete</button>
-            </div>
-            
-        </a>
+        <img 
+        [src]="contact.imageUrl" 
+        alt="{{ contact.name }}"
+        class="img-responsive"
+        style="max-height: 300px">
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <h4 class="list-group-item-heading">Email:</h4>
-        <p class="list-group-item-description">Phone: </p>
+        <h1>{{ contact.name }}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+     <div class="btn-group">
+         <button
+         type="button"
+         class="btn btn-primary dropdown-toggle">
+          manage Contact <span class="caret"></span>   
+         </button>
+         <ul class="dropdown-menu">
+            <li><a href="">To contact list</a></li>
+            <li><a href="">edit Contact</a></li>
+         </ul>
+
+     </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        {{contact.email}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        something here
     </div>
 </div>
