@@ -7,7 +7,7 @@ import { Contact} from '../contact.model';
   styleUrls: ['./contact-detail.component.css']
 })
 export class ContactDetailComponent implements OnInit {
-  @Input() contact= Contact; //refuses to take columns
+  @Input() contact!: Contact; //refuses to take columns
 
   constructor() { }
 
