@@ -22,8 +22,11 @@ export class MessageEditComponent implements OnInit {
     const ingMessage = this.messageInputRef.nativeElement.value;
    const newMessage =  new Message(1, ingSubject, ingMessage, "Komlavi Djossou")
    this.addMessageEvent.emit(newMessage)
+   this.onClear();
   }
   onClear() {
+    this.subjectInputRef.nativeElement.value = "";
+    this.messageInputRef.nativeElement.value = "";
     
   }
 

@@ -12,6 +12,7 @@ import { DocumentsComponent } from './documents/documents.component';
 import { DocumentListComponent } from './documents/document-list/document-list.component';
 import { DocumentDetailComponent } from './documents/document-detail/document-detail.component';
 import { DocumentItemComponent } from './documents/document-list/document-item/document-item.component';
+import { MessagesComponent } from './messages/messages.component';
 import { MessageItemComponent } from './messages/message-list/message-item/message-item.component';
 import { MessageEditComponent } from './messages/message-list/message-edit/message-edit.component';
 import { MessageListComponent } from './messages/message-list/message-list.component';
@@ -29,6 +30,7 @@ import { MessageListComponent } from './messages/message-list/message-list.compo
     DocumentListComponent,
     DocumentDetailComponent,
     DocumentItemComponent,
+    MessagesComponent,
     MessageItemComponent,
     MessageEditComponent,
     MessageListComponent
