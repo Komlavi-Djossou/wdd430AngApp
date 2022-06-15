@@ -6,9 +6,27 @@
     <div class="col-md-7">
         <cms-contact-detail
         *ngIf="selectedContact; else infoText"
-              ></cms-contact-detail>
+        [contact]="selectedContact"></cms-contact-detail>
         <ng-template #infoText>
           <p>Please, select a Contact!</p>
         </ng-template>
     </div>
 </div>
+
+
+<!-- <div class="panel panel-default">
+  <div class="panel-body"> -->
+         <!-- <div class="panel-heading"> -->
+      
+      <!-- <div class="row pad-left-right"> -->
+        <!-- <span class="pull-left title">Contacts</span>
+        <a class="btn btn-success pull-right">New Contact</a>
+     </div> -->
+            <!-- </div> -->
+  <!-- </div>
+  
+  <div class="panel-footer"> -->
+    <!-- <cms-contact-list></cms-contact-list> -->
+  <!-- </div>
+</div> -->
+

@@ -1,4 +1,4 @@
- <a
+ <!-- <a
      href="#" 
         class="list-group-item clearfix"
         {click}="onSelected()">
@@ -13,4 +13,23 @@
                  class="img-responsive" 
                  style="max-height: 50px">
             </span>
+        </a> -->
+        <a
+         href="#"
+         class="list-group-item clearfix"
+         (click)="onSelected()">
+            <!-- left    -->
+            <div class="pull-left">
+                <h4 class="list-group-item-heading"> {{ contact.name }}</h4>
+                <p class="list-group-item-text"> {{ contact.phone }}</p>
+            </div>
+            <!-- right -->
+            <span class="pull-right">
+                <img 
+                [src]="contact.imageUrl" 
+                alt=" {{contact.name }}" 
+                class="img-responsive" 
+                style="max-height: 50px">
+            </span>
+
         </a>
