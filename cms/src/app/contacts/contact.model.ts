@@ -1,3 +1,4 @@
+import { Message } from '../messages/message.model'
 export class Contact {
   constructor(
       public id: string, 
@@ -5,7 +6,7 @@ export class Contact {
       public email: string, 
       public phone: string, 
       public imageUrl: string, 
-      public group: Contact[]
+      public messages: Message[]
       ) {}
 }
 

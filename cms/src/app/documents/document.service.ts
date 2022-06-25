@@ -1,36 +1,80 @@
-import {MOCKDOCUMENTS} from './MOCKDOCUMENTS';
+// import {MOCKCONTACTS} from './MOCKCONTACTS';
 import {EventEmitter , Injectable} from '@angular/core';
+import { Message } from '../messages/message.model';
 import { Document } from './document.model';
+import { MessageService} from '../messages/message.service';
 
 
-
-
-
+// @Injectable()
+@Injectable()
     export class DocumentService {
-        documentSelected = new EventEmitter<Document>(); 
-
+     documentSelected = new EventEmitter<Document>(); 
         documents: Document [] = [
-         
+            new Document (
+                1,
+                'CIT 425',
+                'Data',
+                'Warehouse',
+                null),
+                new Document (
+                    1,
+                    'CIT 425',
+                    'Data Warehouse',
+                    '',
+                    null),
+                    new Document (
+                        1,
+                        'CIT 425',
+                        'Data',
+                        'Warehouse',
+                        null),
+                        new Document (
+                            1,
+                            'CIT 425',
+                            'Data',
+                            'Warehouse',
+                            null),
+                            new Document (
+                                1,
+                                'CIT 425',
+                                'Data',
+                                'Warehouse',
+                                null),
+                                new Document (
+                                    1,
+                                    'CIT 425',
+                                    'Data',
+                                    'Warehouse',
+                                    null),
+                                    new Document (
+                                        1,
+                                        'CIT 425',
+                                        'Data',
+                                        'Warehouse',
+                                        null),
+                                        new Document (
+                                            1,
+                                            'CIT 425',
+                                            'Data',
+                                            'Warehouse',
+                                            null),
+                                            new Document (
+                                                1,
+                                                'CIT 425',
+                                                'Data',
+                                                'Warehouse',
+                                                null)
+                    
+           
         ];
+        // constructor( private dmService: DocumentService){
 
-            constructor() {
-                this.documents = MOCKDOCUMENTS;
-            }
-
+        // }
 
         getDocuments(){
 
             return this.documents.slice();
         }
 
-
-        getDocument(id: string): Document {
-            FOR each document in the documents list
-            IF document.id  the id THEN
-            RETURN document
-            ENDIF
-            ENDFOR
-            RETURN null
-        }
         
     }
