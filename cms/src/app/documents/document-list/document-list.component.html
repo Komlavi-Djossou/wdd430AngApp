@@ -21,7 +21,7 @@
       <div class="panel-body">
        <div class="row pad-left-right">
           <span class="pull-left title">Documents</span>
-          <button class="btn btn-success pull-right">Add Document</button>
+          <button class="btn btn-success pull-right" (click)="onNewDocument()">Add Document</button>
        </div>
       </div>
   
@@ -30,8 +30,9 @@
      <div class="row">
         <div class="center-panel">
             <cms-document-item
-              *ngFor="let documentEl of documents"
-           [document]="documentEl"></cms-document-item>
+              *ngFor="let documentEl of documents; let i = index"
+           [document]="documentEl"
+           [index]="i"></cms-document-item>
         </div>
       </div>
    

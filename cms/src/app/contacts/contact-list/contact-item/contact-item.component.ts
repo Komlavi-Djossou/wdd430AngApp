@@ -10,13 +10,12 @@ import { ContactService } from '../../contact.service';
 })
 export class ContactItemComponent implements OnInit {
   @Input() contact!: Contact; //refuses to take colummns
+  @Input() index!: number;
   
   constructor(private contactService: ContactService) { }
 
   ngOnInit(): void {
   }
-  onSelected(){
-    this.contactService.contactSelected.emit(this.contact);
-  }
+ 
 
 }
