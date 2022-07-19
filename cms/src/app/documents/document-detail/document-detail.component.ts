@@ -14,6 +14,7 @@ export class DocumentDetailComponent implements OnInit {
   document!: Document;
   id!: number;
   nativeWindow: any;
+  documentList!: Document[];
 
 
   constructor( private documentService: DocumentService,
@@ -42,5 +43,8 @@ export class DocumentDetailComponent implements OnInit {
     this.documentService.deleteDocument(this.document);
     // route back to the '/documents' URL
  }
+ onEditDocument(){
+  this.router.navigate(["edit"], {relativeTo: this.route})
+}
   
 }

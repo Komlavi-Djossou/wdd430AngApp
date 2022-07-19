@@ -15,10 +15,12 @@
                 <li  class="dropdown" appDropdown>
                     <a class="dropdown-toggle" role="button">User <span class="caret"></span> </a>
                 <ul class="dropdown-menu">
-                    <li><a href="">Login</a></li>
-                    <li><a href="#">Other</a></li>
+                    <li><a style="cursor: pointer;">Login</a></li>
+                    <li><a style="cursor: pointer;">Other</a></li>
+                    <li><a style="cursor: pointer;"(click)="onSaveData()">Save</a></li>
+                    <li><a style="cursor: pointer;" (click)="onFetchData()">Fetch</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#">Logout</a></li>
+                    <li><a >Logout</a></li>
                 </ul>
                 </li>
             </ul>

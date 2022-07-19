@@ -30,6 +30,8 @@ export class ContactListComponent implements OnInit, OnDestroy {
   onNewContact(){
     this.router.navigate(['new'], {relativeTo: this.route})
   }
+ 
+
   ngOnDestroy(): void {
     this.igChangeSub.unsubscribe();
   }

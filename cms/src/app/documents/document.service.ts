@@ -4,6 +4,7 @@ import { Message } from '../messages/message.model';
 import { Subject } from 'rxjs';
 import { Document } from './document.model';
 import { MessageService} from '../messages/message.service';
+import { Contact } from '../contacts/contact.model';
 
 
 // @Injectable()
@@ -11,6 +12,7 @@ import { MessageService} from '../messages/message.service';
     export class DocumentService {
 
      documentChangedEvent =  new Subject<Document[]>();
+     startedEditing = new Subject<number>();
 
      documentSelected = new Subject<Document>(); 
         documents: Document [] = [
@@ -123,20 +125,24 @@ import { MessageService} from '../messages/message.service';
     //         documentsListClone = documents.slice()
     //         documentListChangedEvent.next(documentsListClone)
     //     }
-    //     updateDocument(originalDocument: Document, newDocument: Document) {
-    //         if originalDocument or newDocument is undefined or null then
-    //             return
-    //         endIf
+        // updateDocument(originalDocument: Document, newDocument: Document) {
+       
+        //     if (originalDocument || newDocument == undefined || null ){
+        //         return
+        //     }
+        //     (){
+        //         pos = documents.indexOf(originalDocument)
+        //         if pos < 0 then
+        //             return
+
+        //     }
+    
+        //     endIf
         
-    //         pos = documents.indexOf(originalDocument)
-    //         if pos < 0 then
-    //             return
-    //         endIf
-        
-    //         newDocument.id = originalDocument.id
-    //         documents[pos] = newDocument
-    //         documentsListClone = documents.slice()
-    //         documentListChangedEvent.next(documentsListClone)
+        //     newDocument.id = originalDocument.id
+        //     documents[pos] = newDocument
+        //     documentsListClone = documents.slice()
+        //     documentListChangedEvent.next(documentsListClone)
     //     }
     //     deleteDocument(document: Document) {
     //         if document is undefined or null then
@@ -152,7 +158,23 @@ import { MessageService} from '../messages/message.service';
     //         documentsListClone = documents.slice()
     //         documentListChangedEvent.next(doumentsListClone)
     //     }
+    addDocument(document: Document){
+        this.documents.push(document);
+        this.documentChangedEvent.next(this.documents.slice());
+      }
+      updateDocument(index: number, newRecipe: Document){
+        this.documents[index]= newRecipe;
+      }
+      deleteRecipe(index: number){
+        this.documents.splice(index, 1);
+        this.documentChangedEvent.next(this.documents.slice())
+      }
         
+      setDocuments(documents: Document[]){
+        this.documents = documents;
+        this.documentChangedEvent.next(this.documents.slice())
+      }
+      
     }
 
   

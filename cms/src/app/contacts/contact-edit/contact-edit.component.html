@@ -1,1 +1,204 @@
-<p>contact-edit works!</p>
+<!-- <div class="panel panel-default">
+  <div class="panel-body">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()"   id="contact-edit">
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control required"
+            size="120"
+            max="120">
+        </div>
+      </div> -->
+
+      <!-- <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="email">Email:</label>
+          <input
+            type="text"
+            id="email"
+            class="form-control required"
+            size="120"
+            max="255">
+        </div>
+      </div> -->
+
+      <!-- <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="phone">Phone:</label>
+          <input
+            type="text"
+            id="phone"
+            class="form-control invalid"
+            size="150"
+            max="255">
+
+        </div>
+      </div> -->
+
+      <!-- <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="imageUrl">Image URL:</label>
+          <input
+            type="text"
+            id="imageUrl"
+            class="form-control"
+            size="150"
+            max="255">
+        </div>
+      </div> -->
+
+      <!-- <div class="row">
+        <div class="form-group">
+          <label for="groupList">Group Contacts:</label>
+
+          <div class="row" id="groupList"
+              style="min-height: 3rem;" >
+
+            <div *ngFor="let contact of groupContacts; let i = index">
+              <div>
+                <cms-contact-item class="col-sm-11" [contact]="contact"></cms-contact-item>
+                <button class="btn btn-danger col-sm-2 deleteButton" (click)="onRemoveItem(i)">X</button>
+              </div>
+            </div>
+            <span class="dragMsg" *ngIf="groupContacts?.length < 1">Drag contacts in group here</span>
+          </div>
+
+        </div>
+      </div> -->
+
+
+      <!-- <div class="row">
+        <div class="col-xs-12 btn-toolbar">
+          <button class="btn btn-success" type="submit" [disabled]="!contactForm.valid">Save</button>
+          <button class="btn btn-primary" type="button" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div> -->
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <form  [formGroup]="contactForm" (ngSubmit)="onSubmit()" id="document-edit">
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="name">Name:</label>
+          <input
+            size="120"
+            max="120"
+            type="text"
+            id="name"
+            formControlName="email"
+            class="form-control"
+            required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="email">Email:</label>
+          <input
+            size="120"
+            max="120"
+            type="text"
+            id="email"
+            formControlName="email"
+            class="form-control"
+            required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="phone">Phone:</label>
+          <input
+            type="text"
+            id="description"
+            name="phone"
+            class="form-control"
+            size="120"
+            max="255"
+            formControlName="phone"
+            required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="imageUrl">Document URL:</label>
+          <input
+            type="text"
+            id="imageUrl"
+            name="imageUrl"
+            class="form-control"
+            size="150"
+            max="255"
+            formControlName="imageUrl"
+            required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12" formArrayName="messages">
+            <div 
+            class="row"
+            *ngFor="let ingredientCtrl of controls; let i = index"
+            [formGroupName]="i"
+            style="margin-top: 10px">
+               <div class="col-xs-8">
+                <input 
+                type="text"
+                class="form-control"
+                formControlName="subject">
+
+               </div> 
+               <div class="col-xs-2">
+                <input 
+                type="text"
+                class="form-control"
+                formControlName="sender">
+
+               </div> 
+               <div class="col-xs-2">
+              <button 
+              type="button"
+              class="btn btn-danger"
+              (click)="onDeleteContact(i)">X</button>
+
+               </div> 
+          </div>
+          <div class="row">
+
+          <div class="col-xs-12">
+             <button 
+             type="button"
+             class="btn btn-success" 
+             (click)="onAddContact()">Add Message</button>
+          </div>
+     </div>
+     </div>
+     <hr>
+
+    </div> 
+
+      <div class="row">
+        <div class="col-xs-12 btn-toolbar">
+          <button 
+          type="submit" 
+           class="btn btn-success"
+            >Save</button>
+            <button type="button" class="btn btn-danger"(click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+

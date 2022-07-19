@@ -17,7 +17,8 @@ export class ContactDetailComponent implements OnInit {
 
 
   constructor( private contactService: ContactService,
-             private route: ActivatedRoute,) { }
+             private route: ActivatedRoute,
+             private router: Router) { }
 
   ngOnInit(){
     this.route.params
@@ -34,6 +35,10 @@ export class ContactDetailComponent implements OnInit {
     this.contactService.deleteContact(this.contact);
     // route back to the '/documents' URL
  }
+
+ onEditContact(){
+  this.router.navigate(["edit"], {relativeTo: this.route})
+}
   // onAddToMessageList(){
   //   this.contactService.addMessageToMessageList(this.contact.messages)
   // }

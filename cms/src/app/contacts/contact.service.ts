@@ -97,6 +97,19 @@ import { Subject } from 'rxjs';
             this.contactChangedEvent.next(this.contacts.slice());
           }
 
+          addContact(contact: Contact){
+            this.contacts.push(contact);
+            this.contactChangedEvent.next(this.contacts.slice());
+          }
+          updateContact(index: number, newContact: Contact){
+            this.contacts[index]= newContact;
+          }
+
+          setContacts(contacts: Contact[]){
+            this.contacts = contacts;
+            this.contactChangedEvent.next(this.contacts.slice())
+          }
+
 
         // addMessageToMessageList(messages: Message[]){
         //     this.mgService.addMessages(messages);   

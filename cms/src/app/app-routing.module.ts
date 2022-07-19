@@ -8,20 +8,40 @@ import { ContactEditComponent }   from './contacts/contact-edit/contact-edit.com
 import { DocumentsComponent } from './documents/documents.component';
 import { DocumentEditComponent } from './documents/document-edit/document-edit.component';
 import { DocumentDetailComponent } from './documents/document-detail/document-detail.component';
+import { DocumentsResolverService } from './documents/document-resolver.service';
+import { ContactsResolverService } from './contacts/contact-resolver.service';
+
 
 const routes: Routes = [
   {path: '', redirectTo: '/documents', pathMatch: 'full'},
 
   {path: 'contacts', component: ContactsComponent, children: [
     { path: 'new', component: ContactEditComponent},
-    { path: ':id', component: ContactDetailComponent},
-    { path: ':id/edit', component: ContactEditComponent}
+    { 
+      path: ':id',
+     component: ContactDetailComponent,
+     resolve: [ContactsResolverService]
+    },
+     
+    { 
+      path: ':id/edit', 
+      component: ContactEditComponent ,
+      resolve: [ContactsResolverService] ,
+  }
   ]},
 
   {path: 'documents', component: DocumentsComponent, children: [
     { path: 'new', component: DocumentEditComponent},
-    { path: ':id', component: DocumentDetailComponent},
-    { path: ':id/edit', component: DocumentEditComponent}
+    {
+      path:':id', 
+      component: DocumentDetailComponent, 
+      resolve: [DocumentsResolverService] },
+    { 
+      path: ':id/edit', 
+      component: DocumentEditComponent,
+      resolve: [DocumentsResolverService]
+    }
+  
   ]},
   {path: 'messages', component: MessagesComponent}
 ];
