@@ -22,5 +22,9 @@ export class MessageService {
         this.messagesChanged.emit(this.messages.slice());
  
       }
+      setMessages(messages: Message[]){
+        this.messages = messages;
+        this.messagesChanged.next(this.messages.slice())
+      }
    
 }

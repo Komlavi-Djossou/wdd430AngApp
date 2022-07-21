@@ -4,6 +4,8 @@ import { Message } from '../messages/message.model';
 import { Contact } from './contact.model';
 import { MessageService} from '../messages/message.service';
 import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators'
+import { HttpClient } from '@angular/common/http';
 
 
 // @Injectable()
@@ -14,104 +16,78 @@ import { Subject } from 'rxjs';
         contactChangedEvent =  new Subject<Contact[]>();
 
      contactSelected = new Subject<Contact>(); 
-        contacts: Contact [] = [
-            new Contact (
-                '1',
-                'Blaine Roberston',
-                '',
-                '',
-                '../assets/images/robertsonb.jpg',
-                [
-                    new Message (1, 'Math', 'it is hard', 'Komlavi'),
-                    new Message (1, 'Math', 'it is hard', 'Komlavi')
+        contacts: Contact [] = [ ];
 
-                ]),
-                new Contact (
-                    '1',
-                    'Bradley Amstrong',
-                    '',
-                    '',
-                    '../assets/images/armstrongb.jpg',
-                    [
-                        new Message (1, 'Math', 'it is hard', 'Komlavi'),
-                        new Message (1, 'Math', 'it is hard', 'Komlavi')
-    
-                    ]),
-                    new Contact (
-                        '1',
-                        'Brent Morring',
-                        '',
-                        '',
-                        '../assets/images/robertsonb.jpg',
-                        [
-                            new Message (1, 'Math', 'it is hard', 'Komlavi'),
-                            new Message (1, 'Math', 'it is hard', 'Komlavi')
-        
-                        ]),
-                        new Contact (
-                            '1',
-                            'Computer Team',
-                            '',
-                            '',
-                            '',
-                            [
-                                new Message (1, 'Math', 'it is hard', 'Komlavi'),
-                                new Message (1, 'Math', 'it is hard', 'Komlavi')
-            
-                            ]),
-                            new Contact (
-                                '1',
-                                'Craig Lindstrom',
-                                '',
-                                '',
-                                '../assets/images/lindstromc.jpg',
-                                [
-                                    new Message (1, 'Math', 'it is hard', 'Komlavi'),
-                                    new Message (1, 'Math', 'it is hard', 'Komlavi')
-                
-                                ])
-           
-        ];
-        constructor( private mgService: MessageService){
+        constructor( private contactService: ContactService,
+            private http: HttpClient){
 
         }
 
         getContacts(){
-
-            return this.contacts.slice();
-        }
+            this.http.get<{message: string, documents: any}>('http//:localhost:3000/api/contacts')
+            .pipe(map((contactData) =>{
+             return contactData.documents.map(post =>{
+               return {
+                   name: post.name,
+                   email:  post.email,
+                   id: post._id,
+                   phone:  post.phone,
+                   imageUrl: post.imageUrl,
+                   group: post.group
+    
+               }
         
-        getContact(index: number){
-            return this.contacts[index]
-          }
-
-          deleteContact(contact: Contact) { 
-            if (!contact) {
-                return;
-            }
-            const pos = this.contacts.indexOf(contact);
-            if (pos < 0) {
-                return;
-            }
-            this.contacts.splice(pos, 1);
-            this.contactChangedEvent.next(this.contacts.slice());
-          }
-
-          addContact(contact: Contact){
-            this.contacts.push(contact);
-            this.contactChangedEvent.next(this.contacts.slice());
-          }
-          updateContact(index: number, newContact: Contact){
-            this.contacts[index]= newContact;
-          }
-
-          setContacts(contacts: Contact[]){
-            this.contacts = contacts;
-            this.contactChangedEvent.next(this.contacts.slice())
-          }
-
-
-        // addMessageToMessageList(messages: Message[]){
-        //     this.mgService.addMessages(messages);   
-        // }
+             })
+            }))
+           .subscribe((transformedContact)=>{
+             this.contacts =transformedContact.documents;
+             this.contactChangedEvent.next([...this.contacts.slice()])
+           })
+           }
+        
+              //item to edit
+            //   getHouse(index: number){
+            //     return this.houses[index];
+            //   }
+              //Update item
+            //   updateHouse(index: number, newHouse: House){
+            //     this.houses[index] = newHouse;
+            //     this.housesChanged.next(this.houses.slice());
+        
+            //   }
+              //deleteIngredient
+              // deleteHouse(index: number){
+              //   this.houses.splice(index, 1);
+              //   this.housesChanged.next(this.houses.slice());
+        
+              // }
+        
+        
+            //   addHouse(house: House){
+            //     this.houses.push(house);
+            //     this.housesChanged.next(this.houses.slice());
+            //   }
+            addDocument(contact: Contact){
+                this.http
+                .post<{message: string, documentId: string}>('http//:localhost:3000/api/contacts', contact)
+                .subscribe(responseData =>{
+                  const id = responseData.documentId
+                  contact.id = id;
+                  this.contacts.push(contact);
+                  this.contactChangedEvent.next(this.contacts.slice());
+                })
+              }
+             
+              deleteDocument(contactId: number){
+                this.http.delete('http//:localhost:3000/api/contacts' + contactId)
+                .subscribe(() => {
+                  const updatedContacts = this.contacts.filter(post => post.id);
+                  this.contacts = updatedContacts;
+                  this.contactChangedEvent.next([...this.contacts.slice()])
+        
+                  
+                })
+               
+        
+              }
     }

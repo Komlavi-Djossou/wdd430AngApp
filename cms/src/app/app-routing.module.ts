@@ -46,6 +46,18 @@ const routes: Routes = [
   {path: 'messages', component: MessagesComponent}
 ];
 
+
+
+// {path: 'messages', component: MessagesComponent, children: [
+//   { path: 'new', component: MessageEditComponent},
+ 
+//    { path: ':id/edit', 
+//     component: MessageEditComponent,
+//     resolve: [MessagesResolverService]
+//   }
+
+// ]}
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
